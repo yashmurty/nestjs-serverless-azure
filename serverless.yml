@@ -1,11 +1,11 @@
-service: sls-az-func-rest-api
+service: nestjs-serverless-azure
 
 provider:
   name: azure
   runtime: nodejs10.x
   region: ${opt:region, 'West US'}
   stage: ${opt:stage, 'dev'}
-  prefix: ${opt:prefix, 'nestjs-serverless-azure'}
+  prefix: ${opt:prefix, 'yashmurty'}
   apim: true
 
 plugins:
@@ -16,10 +16,6 @@ package:
     - local.settings.json
     - .vscode/**
 
-functions:
-  azure-function:
-    handler: dist/main/index
-    events:
-      - http: true
-        x-azure-settings:
-          authLevel: function
+ 
+# Even without manually adding the functions here, it seems to work out of the box.
+# Possibly due to the plugin serverless-azure-functions and nest js package nestjs/azure-func-http.
