@@ -17,8 +17,8 @@ package:
     - .vscode/**
 
 functions:
-  main:
-    handler: src/main
+  azure-function:
+    handler: dist/main/index
     events:
       - http: true
         x-azure-settings:
