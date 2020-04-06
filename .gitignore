@@ -32,3 +32,10 @@ lerna-debug.log*
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+
+# Azure Functions artifacts
+bin
+obj
+appsettings.json
+local.settings.json
