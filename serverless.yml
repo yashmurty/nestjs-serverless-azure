@@ -19,3 +19,11 @@ package:
  
 # Even without manually adding the functions here, it seems to work out of the box.
 # Possibly due to the plugin serverless-azure-functions and nest js package nestjs/azure-func-http.
+# Try `proxy` approach and remove the function.json file from main folder.
+functions:
+  main-azure-package:
+    handler: dist/main/index
+    events:
+      - http: true
+        x-azure-settings:
+          authLevel: function
