@@ -17,13 +17,20 @@ package:
     - .vscode/**
 
  
-# Even without manually adding the functions here, it seems to work out of the box.
-# Possibly due to the plugin serverless-azure-functions and nest js package nestjs/azure-func-http.
-# Try `proxy` approach and remove the function.json file from main folder.
+# Upon originally adding the nestjs-azure-functions, a function.json file is created.
+# I have translated that file to the below azure function definition. For ref:
+# https://docs.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings
+# https://serverless.com/framework/docs/providers/azure/guide/events/
 functions:
-  main-azure-package:
+  main:
     handler: dist/main/index
     events:
       - http: true
         x-azure-settings:
-          authLevel: function
+          name: req
+          authLevel: anonymous
+          route: "{*segments}"
+      - http: true
+        x-azure-settings:
+          direction: out
+          name: res
