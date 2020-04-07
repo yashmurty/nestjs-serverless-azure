@@ -19,7 +19,9 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "start:azure": "npm run build && func host start"
+    "start:azure": "npm run build && func host start",
+    "sls-offline": "npm run build && sls offline",
+    "sls-deploy": "npm run build && sls deploy"
   },
   "dependencies": {
     "@azure/functions": "^1.0.3",

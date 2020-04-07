@@ -6,15 +6,16 @@ This is a proof-of-concept app which utilizes the following projects/technologie
 
 - [NestJS](https://github.com/nestjs/nest) - NodeJS Framework.
 - [Serverless](https://github.com/serverless/serverless) - Build applications with serverless architectures using AWS Lambda.
-    - [Provisioned Lambda](https://aws.amazon.com/about-aws/whats-new/2019/12/aws-lambda-announces-provisioned-concurrency/) - We would like to use provisioned lambda this time.
+    - [Azure Functions](https://serverless.com/framework/docs/providers/azure/guide/intro/)
+    - [Azure Functions scalability](https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-perf-and-scale)
 - [CosmosDB](https://docs.microsoft.com/en-us/azure/cosmos-db/) - Azure Cosmos DB is Microsoft’s globally distributed, multi-model database service for operational and analytics workloads.
 
 ### Progress
 
 | Technology  | Progress |
 | ------------- | ------------- |
-| NestJS  | In-Progress  |
-| Serverless  | In-Progress  |
+| NestJS  | PoC Done |
+| Serverless  | PoC Done  |
 | CosmosDB  | Not Started  |
 
 ### Secondary Tasks for PoC
