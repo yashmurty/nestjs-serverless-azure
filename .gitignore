@@ -40,4 +40,3 @@ bin
 obj
 appsettings.json
 local.settings.json
-host.json

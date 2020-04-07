@@ -6,7 +6,23 @@ provider:
   region: ${opt:region, 'West US'}
   stage: ${opt:stage, 'dev'}
   prefix: ${opt:prefix, 'yashmurty'}
-  apim: true
+  apim:
+    apis:
+      # Name of the API
+      - name: main-api
+        subscriptionRequired: false
+        # Display name
+        displayName: Main API
+        # Description of API
+        description: The Main REST API
+        # HTTP protocols allowed
+        protocols:
+          - https
+        # Base path of API calls
+        path: /
+    backends:
+      - name: main-backend
+        url: api/v1
 
 plugins:
   - serverless-azure-functions
@@ -16,11 +32,13 @@ package:
     - local.settings.json
     - .vscode/**
 
- 
-# Upon originally adding the nestjs-azure-functions, a function.json file is created.
-# I have translated that file to the below azure function definition. For ref:
-# https://docs.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings
-# https://serverless.com/framework/docs/providers/azure/guide/events/
+## NOTE: 
+# 1 Upon originally adding the nestjs-azure-functions, a function.json file is created.
+#   I have translated that file to the below azure function definition. For ref:
+#   https://docs.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings
+#   https://serverless.com/framework/docs/providers/azure/guide/events/
+# 2 URL paths for the serverless functions are prefixed with "api" by default, e.g. /api/some/path. 
+#   You can change this via a setting in host.json.
 functions:
   main:
     handler: dist/main/index
@@ -34,3 +52,12 @@ functions:
         x-azure-settings:
           direction: out
           name: res
+    apim:
+      api: main-api
+      backend: main-backend
+      operations:
+        - method: all
+          urlTemplate: /{*segments}
+          templateParameters:
+            - name: segments
+              type: string
